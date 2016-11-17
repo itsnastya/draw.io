@@ -89,7 +89,7 @@
         name="${scope.project.label}">
       <predicate
           xsi:type="predicates:LocationPredicate"
-          pattern=".*/${scope.project.name}/.*"/>
+          pattern=".*"/>
     </workingSet>
     <description></description>
   </setupTask>
