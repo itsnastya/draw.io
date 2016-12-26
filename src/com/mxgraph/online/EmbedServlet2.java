@@ -1,18 +1,18 @@
 /**
  * $Id: EmbedServlet.java,v 1.18 2014/01/31 22:27:07 gaudenz Exp $
  * Copyright (c) 2011-2012, JGraph Ltd
- * 
+ *
  * TODO
- * 
+ *
  * We could split the static part and the stencils into two separate requests
  * in order for multiple graphs in the pages to not load the static part
  * multiple times. This is only relevant if the embed arguments are different,
  * in which case there is a problem with parsin the graph model too soon, ie.
  * before certain stencils become available.
- * 
+ *
  * Easier solution is for the user to move the embed script to after the last
  * graph in the page and merge the stencil arguments.
- * 
+ *
  * Note: The static part is roundly 105K, the stencils are much smaller in size.
  * This means if the embed function is widely used, it will make sense to factor
  * out the static part because only stencils will change between pages.
@@ -43,34 +43,34 @@ import com.google.appengine.api.utils.SystemProperty;
 public class EmbedServlet2 extends HttpServlet
 {
 	/**
-	 * 
-	 */
+     *
+     */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
-	 */
+     *
+     */
 	protected static String SHAPES_PATH = "/shapes";
 
 	/**
-	 * 
-	 */
+     *
+     */
 	protected static String STENCIL_PATH = "/stencils";
 
 	/**
-	 * 
-	 */
+     *
+     */
 	protected static String lastModified = null;
 
 	/**
-	 * 
-	 */
-	protected HashMap<String, String> stencils = new HashMap<String, String>();
+     *
+     */
+	protected HashMap<String, String> stencils = new HashMap<>();
 
 	/**
-	 * 
-	 */
-	protected HashMap<String, String[]> libraries = new HashMap<String, String[]>();
+     *
+     */
+	protected HashMap<String, String[]> libraries = new HashMap<>();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -81,10 +81,10 @@ public class EmbedServlet2 extends HttpServlet
 		{
 			// Uses deployment date as lastModified header
 			String applicationVersion = SystemProperty.applicationVersion.get();
-			Date uploadDate = new Date(Long
-					.parseLong(applicationVersion
-							.substring(applicationVersion.lastIndexOf(".") + 1))
-					/ (2 << 27) * 1000);
+            Date uploadDate = new Date();//Date(Long
+            //.parseLong(applicationVersion
+            //		.substring(applicationVersion.lastIndexOf(".") + 1))
+            /// (2 << 27) * 1000);
 
 			DateFormat httpDateFormat = new SimpleDateFormat(
 					"EEE, dd MMM yyyy HH:mm:ss z", Locale.US);
@@ -181,7 +181,8 @@ public class EmbedServlet2 extends HttpServlet
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request,
+	@Override
+    protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
 		try
@@ -228,7 +229,7 @@ public class EmbedServlet2 extends HttpServlet
 		PrintWriter writer = new PrintWriter(out);
 
 		// Writes JavaScript and adds function call with
-		// stylesheet and stencils as arguments 
+        // stylesheet and stencils as arguments
 		writer.println(createEmbedJavaScript(request));
 		response.setStatus(HttpServletResponse.SC_OK);
 
@@ -245,10 +246,10 @@ public class EmbedServlet2 extends HttpServlet
 		StringBuffer js = new StringBuffer("");
 
 		// Processes each stencil only once
-		HashSet<String> done = new HashSet<String>();
+		HashSet<String> done = new HashSet<>();
 
 		// Processes each lib only once
-		HashSet<String> libsLoaded = new HashSet<String>();
+		HashSet<String> libsLoaded = new HashSet<>();
 
 		if (sparam != null)
 		{

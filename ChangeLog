@@ -194,12 +194,12 @@
 - Uses mxGraph 3.5.1.6 beta 4
 - Escape while editing applies new text value
 - Fixes bounds for zoomed markup in-place editor
-- Fixes JIRA cloud integration for Safari 
+- Fixes JIRA cloud integration for Safari
 
 25-AUG-2016: 5.5.6.0
 
 - Uses mxGraph 3.5.1.6 beta 3
-- Ignores scale for guides 
+- Ignores scale for guides
 - Fixes ignored background image in realtime
 - Removes clipping for general text in grapheditor example
 - Adds workaround for image printing in Chrome
@@ -1308,7 +1308,7 @@
 - Adds autostart option item in voice menu for plugin
 - Adds voice assistant item in main help menu
 - Hides voice assistant footer if not supported
-- Fixes edge clipping in print and PDF export 
+- Fixes edge clipping in print and PDF export
 - Uses mxGraph 3.4.0.2 beta 8
 
 15-OCT-2015: 5.2.1.3
@@ -2015,7 +2015,7 @@
 - Deletes shapes and connections separately
 - Changes connect (plus) icon to arrow icon
 - Copy on connect is now disabled by default
-- Adds cross-browser Ctrl-/Cmd+B/I/U for bold, italic, underline 
+- Adds cross-browser Ctrl-/Cmd+B/I/U for bold, italic, underline
 - Adds shift in keyboard shortcut for ungroup, toBack
 - Fixes update of page view option in format panel
 - Adds message with save link for new unsaved files
@@ -2339,7 +2339,7 @@
 03-JUN-2015: 4.8.0.0
 
 - Adds caching for formatted text labels and math
-- Fixes initial svg/html save in undefined mode 
+- Fixes initial svg/html save in undefined mode
 - Uses mxGraph 3.3.1.0 beta 3
 - Fixes printing with math
 
