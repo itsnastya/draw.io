@@ -1,7 +1,8 @@
 package com.mxgraph.online;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.util.logging.Logger;
 
@@ -18,17 +19,17 @@ import com.mxgraph.util.mxBase64;
 public class SaveServlet extends HttpServlet
 {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
+	 *
 	 */
 	public static String ALLOW_COMPRESSION = "allowCompression";
 
 	/**
-	 * 
+	 *
 	 */
 	private static final Logger log = Logger.getLogger(SaveServlet.class
 			.getName());
@@ -45,7 +46,8 @@ public class SaveServlet extends HttpServlet
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
+	@Override
+    protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
 		handlePost(request, response);
@@ -128,7 +130,7 @@ public class SaveServlet extends HttpServlet
 				if (mime != null && data != null)
 				{
 					response.setStatus(HttpServletResponse.SC_OK);
-					
+
 					if (filename != null)
 					{
 						response.setContentType(mime);
@@ -146,9 +148,25 @@ public class SaveServlet extends HttpServlet
 						response.setContentType("text/plain");
 					}
 
-					OutputStream out = response.getOutputStream();
-					out.write(data);
-					out.close();
+                    // Сохранение файла на сервер
+                    try
+                    {
+                        File file =
+                            new File("C:/Users/Monster/draw-io-master/git/draw.io/WebContent/diagrams/" + filename);
+                        file.getParentFile().mkdirs();
+
+                        PrintWriter printWriter = new PrintWriter(file);
+                        printWriter.println(xml);
+                        printWriter.close();
+                    }
+                    catch (IOException e)
+                    {
+                        // do something
+                    }
+
+                    //OutputStream out = response.getOutputStream();
+                    //out.write(data);
+                    //out.close();
 				}
 				else
 				{
