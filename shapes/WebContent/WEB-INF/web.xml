@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>shapes</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>customShapesGiver</display-name>
+    <servlet-name>customShapesGiver</servlet-name>
+    <servlet-class>com.mxgraph.shapes.customShapesGiver</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>customShapesGiver</servlet-name>
+    <url-pattern>/customShapesGiver</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>svgexport</display-name>
+    <servlet-name>svgexport</servlet-name>
+    <servlet-class>com.mxgraph.export.SvgExporter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>svgexport</servlet-name>
+    <url-pattern>/svgexport</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TooltipService</display-name>
+    <servlet-name>TooltipService</servlet-name>
+    <servlet-class>com.mxgraph.tooltips.TooltipService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TooltipService</servlet-name>
+    <url-pattern>/TooltipService</url-pattern>
+  </servlet-mapping>
+</web-app>
